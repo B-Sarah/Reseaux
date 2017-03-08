@@ -55,21 +55,31 @@ void connectToServer(Server* server,char* serverAddress){
 	char machaine[80];
 	strcpy(machaine, "hello world");
 	char* pt = machaine;
-	if(xdr_string(&xdr_encode, &pt,80) == FALSE){
+
+	int posBef = xdr_getpos(&xdr_encode);
+	printf("Pos before %d\n", posBef);
+
+	if(xdr_string(&xdr_encode,&pt, 80) == FALSE){
 		printf("fail to encode \n");
 		fflush(stdout);
 	}
+	int encodedSize = xdr_getpos(&xdr_encode);
+	printf("Encoded %d characters\n", encodedSize);
 
-	printf("message to send \"%s\"\n", sent);
+	/*printf("message to send \"%s\"\n", sent);
+	printf("first charac \"%c\" : %d\n", sent[0], sent[0]);
+	printf("scnd charac \"%c\" : %d\n", sent[1], sent[1]);
+	printf("last charac \"%c\" : %d\n", sent[MAX_MSG_SIZE], sent[MAX_MSG_SIZE]);
 	fflush(stdout);
+	*/
 
 	/*envoi du message contenant le player encode*/
-	if(write(server->socket, sent, strlen(sent)+1) != strlen(sent)+1){
+	if(send(server->socket, sent, encodedSize, 0) != encodedSize){
 		perror("write");
 	}
 
-	printf("message has been sent \"%s\"\n", sent);
-	fflush(stdout);
+	/*printf("message has been sent \"%X\"\n", sent[3]);
+	fflush(stdout);*/
 }
 
 bool_t xdr_player(XDR* pt_xdr, Player* player){

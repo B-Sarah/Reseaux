@@ -31,6 +31,14 @@ void* handleClient(void* client_){
 
 	//sleep(5);
 	/*reception d'un message contenant un player encode*/
+
+	/*FILE* sockStream = fdopen(client->socket, "w+");
+	if(sockStream == NULL){
+		printf("fail to open socket stream\n");
+		fflush(stdout);
+	}*/
+
+
 	if(read(client->socket, received, MAX_MSG_SIZE) < 0){
 		perror("read");
 	}
@@ -42,12 +50,13 @@ void* handleClient(void* client_){
 
 	char machaine[80];
 	char* pt = machaine;
-	if(xdr_string(&xdr_decode, &pt,80) == FALSE){
+
+	if(xdr_string(&xdr_decode, &pt, 80) == FALSE){
 		printf("fail to decode \n");
 		fflush(stdout);
 	}
 
-	printf("Msg received : %s\n", machaine);
+	printf("Msg received : %s\n", pt);
 	fflush(stdout);
 				
 	/*printf("Msg received :\nname : %s\npassword : %s\n", player.name, player.password);
