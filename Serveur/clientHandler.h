@@ -24,7 +24,6 @@ typedef struct{
 typedef struct{
 	char name[30];
 	char password[20];
-	Character character;
 }Player;
 
 typedef struct{
