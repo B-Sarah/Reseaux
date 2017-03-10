@@ -86,7 +86,20 @@ void* acceptClients(void* server_){
 	pthread_exit((void*)0);
 }
 
+void sendMessageTo(Client* client, char* msg, int msgSize){
+	if(send(client->socket, msg, msgSize, 0) != msgSize){
+		perror("write");
+	}
+}
 
+void sendMessageToAll(Client* client, char* msg, int msgSize){
+	int i;
+	for(i = 0; i < MAX_CLIENT; i++){
+		if(clients[i] != NULL){
+			sendMessageTo(clients[i], msg, msgSize);
+		}
+	}
+}
 
 void stopServer(Server* server){
 	if(server == NULL) exit(1);

@@ -15,6 +15,8 @@
 
 #define MAX_MSG_SIZE 1024
 
+#include "serveur.h"
+
 typedef struct{
 	int socket;
 	struct sockaddr_in address;
