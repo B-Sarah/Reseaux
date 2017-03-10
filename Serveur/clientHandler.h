@@ -15,6 +15,8 @@
 
 #define MAX_MSG_SIZE 1024
 
+#include "serveur.h"
+
 typedef struct{
 	int socket;
 	struct sockaddr_in address;
@@ -24,7 +26,6 @@ typedef struct{
 typedef struct{
 	char name[30];
 	char password[20];
-	Character character;
 }Player;
 
 typedef struct{
