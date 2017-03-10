@@ -43,11 +43,11 @@ void* handleClient(void* client_){
 		perror("read");
 	}
 
-	/*if(xdr_player(&xdr_decode, &player) == FALSE){
+	if(xdr_player(&xdr_decode, &player) == FALSE){
 		printf("fail to decode \n");
 		fflush(stdout);		
-	}*/
-
+	}
+	/*
 	char machaine[80];
 	char* pt = machaine;
 
@@ -58,9 +58,9 @@ void* handleClient(void* client_){
 
 	printf("Msg received : %s\n", pt);
 	fflush(stdout);
-				
-	/*printf("Msg received :\nname : %s\npassword : %s\n", player.name, player.password);
-	fflush(stdout);*/
+	*/			
+	printf("Msg received :\nname : %s\npassword : %s\n", player.name, player.password);
+	fflush(stdout);
 	
 	
 	printf("Un client vient de se deconnecter de la socket %d\n", client->socket);
@@ -78,7 +78,7 @@ bool_t xdr_player(XDR* pt_xdr, Player* player){
 	char* pPwd = player->password;
 	char** ppName = &pName;
 	char** ppPwd = &pPwd;
-	return(xdr_string(pt_xdr, ppName, 30));
+	return(xdr_string(pt_xdr, ppName, 30) && xdr_string(pt_xdr, ppPwd,20));
 
 }
 

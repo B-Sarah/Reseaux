@@ -47,22 +47,22 @@ void connectToServer(Server* server,char* serverAddress){
 	fflush(stdout);
 
 	/*encodage du player*/
-	/*if(xdr_player(&xdr_encode, &player) == FALSE){
-		printf("fail to encode \n");
-		fflush(stdout);
-	}*/
-
-	char machaine[80];
-	strcpy(machaine, "hello world");
-	char* pt = machaine;
-
-	int posBef = xdr_getpos(&xdr_encode);
-	printf("Pos before %d\n", posBef);
-
-	if(xdr_string(&xdr_encode,&pt, 80) == FALSE){
+	if(xdr_player(&xdr_encode, &player) == FALSE){
 		printf("fail to encode \n");
 		fflush(stdout);
 	}
+	/*
+	char machaine[80];
+	strcpy(machaine, "hello world");
+	char* pt = machaine;
+	*/
+	//int posBef = xdr_getpos(&xdr_encode);
+	//printf("Pos before %d\n", posBef);
+	/*
+	if(xdr_string(&xdr_encode,&pt, 80) == FALSE){
+		printf("fail to encode \n");
+		fflush(stdout);
+	}*/
 	int encodedSize = xdr_getpos(&xdr_encode);
 	printf("Encoded %d characters\n", encodedSize);
 

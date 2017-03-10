@@ -15,7 +15,10 @@
 #include "clientHandler.h"
 
 #define MAX_QUEUE_SIZE 100
+#define MAX_CLIENT 50
 #define PORT 3000
+
+extern Client* clients[MAX_CLIENT];
 
 typedef struct{
 	int socket;

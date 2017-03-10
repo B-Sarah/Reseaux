@@ -1,5 +1,6 @@
 #include "serveur.h"
 
+Client* clients[MAX_CLIENT];
 
 void initServer(Server* server){
 	if(server == NULL) exit(1);
