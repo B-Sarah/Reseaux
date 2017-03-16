@@ -114,7 +114,7 @@ bool_t xdr_Charcter(XDR* pt_xdr, Character* character){
 
 /* xdr_Tile */
 
-bool_t xdr_Tile(XDR* pt_xdr, Tile* tile){
+bool_t xdr_player(XDR* pt_xdr, Player* player){
 	char* pName = player->name;
 	char* pPwd = player->password;
 	char** ppName = &pName;

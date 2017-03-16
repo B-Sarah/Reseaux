@@ -24,7 +24,10 @@ typedef struct{
 	struct hostent* host;
 }Server;
 
-;
+typedef struct{
+	char name[30];
+	char password[20];
+}Player;
 
 
 

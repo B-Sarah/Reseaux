@@ -36,15 +36,6 @@ typedef struct{
 	int y;
 }Character;
 
-typedef struct {
-	int isObject;
-	Object* gameObject;
-	Character* character;
-	int x;
-	int y;
-		
-}Tile;
-
 typedef struct{
 	Tile tiles[][];
 	int width;
@@ -58,7 +49,14 @@ typedef struct {
 
 }Object;
 
-
+typedef struct {
+	int isObject;
+	Object* gameObject;
+	Character* character;
+	int x;
+	int y;
+		
+}Tile;
 
 void startHandlingClient(Client* client);
 void* handleClient(void* client_);
