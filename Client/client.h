@@ -24,13 +24,6 @@ typedef struct{
 	struct hostent* host;
 }Server;
 
-;
-
-
-
-
-
-
 void connectToServer(Server* server,char* serverAddress);
 bool_t xdr_player(XDR* pt_xdr, Player* player);
 

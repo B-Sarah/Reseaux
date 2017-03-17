@@ -12,3 +12,5 @@ typedef struct{
 	int y;
 }Character;
 
+#endif
+
